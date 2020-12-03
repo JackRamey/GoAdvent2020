@@ -1,11 +1,12 @@
 package main
 
 import (
-	"bufio"
 	"fmt"
 	"os"
 	"path"
 	"strconv"
+
+	"github.com/JackRamey/GoAdvent2020/pkg/iohelpers"
 )
 
 const target = 2020
@@ -16,7 +17,7 @@ func main() {
 	check(err)
 	filepath := path.Join(cwd, "1-2", "input", "data")
 	// Read input
-	lines, err := fileToLines(filepath)
+	lines, err := iohelpers.FileToLines(filepath)
 	check(err)
 
 	// Parse values into ints
@@ -75,21 +76,6 @@ func seedMapWithExclusion(values []int, exclusion int) map[int]struct{} {
 		}
 	}
 	return entries
-}
-
-func fileToLines(filePath string) (lines []string, err error) {
-	f, err := os.Open(filePath)
-	if err != nil {
-		return
-	}
-	defer f.Close()
-
-	scanner := bufio.NewScanner(f)
-	for scanner.Scan() {
-		lines = append(lines, scanner.Text())
-	}
-	err = scanner.Err()
-	return
 }
 
 func check(err error) {

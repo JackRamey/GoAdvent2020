@@ -6,6 +6,8 @@ import (
 	"os"
 	"path"
 	"strconv"
+
+	"github.com/JackRamey/GoAdvent2020/pkg/iohelpers"
 )
 
 const target = 2020
@@ -16,7 +18,7 @@ func main() {
 	check(err)
 	filepath := path.Join(cwd, "1-1", "input", "data")
 	// Read input
-	lines, err := fileToLines(filepath)
+	lines, err := iohelpers.FileToLines(filepath)
 	check(err)
 
 	// Parse values into ints
