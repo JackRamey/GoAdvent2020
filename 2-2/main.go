@@ -53,15 +53,15 @@ func main() {
 		}
 		switch count {
 		case 0:
-			prettypw = fade(pw[:pos1-1]) + fail(char1) + fade(pw[pos1:pos2]) + fail(char2) + fade(pw[pos2:])
+			prettypw = fade(pw[:pos1-1]) + fail(char1) + fade(pw[pos1:pos2-1]) + fail(char2) + fade(pw[pos2:])
 		case 1:
-			prettypw = pw[:pos1-1] + pass(char1) + pw[pos1:pos2] + okay(char2) + pw[pos2:]
+			prettypw = pw[:pos1-1] + pass(char1) + pw[pos1:pos2-1] + okay(char2) + pw[pos2:]
 			numValid += 1
 		case 2:
-			prettypw = pw[:pos1-1] + okay(char1) + pw[pos1:pos2] + pass(char2) + pw[pos2:]
+			prettypw = pw[:pos1-1] + okay(char1) + pw[pos1:pos2-1] + pass(char2) + pw[pos2:]
 			numValid += 1
 		case 3:
-			prettypw = fade(pw[:pos1-1]) + fail(char1) + fade(pw[pos1:pos2]) + fail(char2) + fade(pw[pos2:])
+			prettypw = fade(pw[:pos1-1]) + fail(char1) + fade(pw[pos1:pos2-1]) + fail(char2) + fade(pw[pos2:])
 		}
 		fmt.Printf("%2d-%2d %s: %-25s\n", pos1, pos2, char, prettypw)
 	}
